@@ -1,0 +1,14 @@
+WebScrapHelper:
+    api:
+        main-url: https://main.url.com.br/ 
+        name: web-scraper
+        extension: yml
+        dependency:
+            update: False
+            list: [Popen,Path,chromedriver,selenium]
+        git:
+            url: https://github.com/SamuelJansen/
+            extension: git
+    python:
+        version: '3.8'
+        version-command: python --version
