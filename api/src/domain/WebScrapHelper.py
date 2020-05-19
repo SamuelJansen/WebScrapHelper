@@ -6,7 +6,11 @@ KW_API = 'api'
 KW_NAME = 'name'
 KW_MAIN_URL = 'main-url'
 
+
 class WebScrapHelper(SeleniumHelper.SeleniumHelper):
+
+    DATASET_FILE_NAME = 'dataset'
+    FAILED_DATASET_FILE_NAME = 'failed-dataset'
 
     def __init__(self,globals,**kwargs):
         SeleniumHelper.SeleniumHelper.__init__(self,globals,**kwargs)
