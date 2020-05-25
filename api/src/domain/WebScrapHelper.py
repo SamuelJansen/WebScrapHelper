@@ -6,7 +6,7 @@ KW_API = 'api'
 KW_NAME = 'name'
 KW_MAIN_URL = 'main-url'
 
-DATABASE_LAST_NAME = 'databse'
+DATABASE_LAST_NAME = 'database'
 
 class WebScrapHelper(SeleniumHelper.SeleniumHelper):
 
@@ -21,18 +21,20 @@ class WebScrapHelper(SeleniumHelper.SeleniumHelper):
     _2_ARGUMENT = 4
 
     def handleCommandList(self,commandList):
-        print(f'commandList = {commandList}')
         commandList = commandList.copy()
         globals = self.globals
         if commandList :
             apiKey = commandList[self._0_API_KEY]
             if len(commandList) > self._1_COMMAND and commandList[self._1_COMMAND] :
                 try :
-                    response = self.commandSet[commandList[self._1_COMMAND]](commandList[self._0_ARGUMENT:])
+                    if len(commandList) > self._0_ARGUMENT :
+                        response = self.commandSet[commandList[self._1_COMMAND]](commandList[self._0_ARGUMENT:])
+                    else :
+                        response = self.commandSet[commandList[self._1_COMMAND]]([])
                     globals.debug(f'response = {response}')
                     return response
-                except :
-                    print(f'{globals.ERROR}Failed to execute command: "{commandList[self._1_COMMAND]}"')
+                except Exception as exception :
+                    print(f'{globals.ERROR}Failed to execute command: "{commandList[self._1_COMMAND]}". Cause: {exception}')
                     return
             else :
                 print(f'Missing command: {list(self.commandSet.keys())}')
