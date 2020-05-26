@@ -21,6 +21,7 @@ class WebScrapHelper(SeleniumHelper.SeleniumHelper):
     _2_ARGUMENT = 4
 
     def handleCommandList(self,commandList):
+        print(f'WebScrapHelper.handleCommandList(commandList): commandList = {commandList}')
         commandList = commandList.copy()
         globals = self.globals
         if commandList :
